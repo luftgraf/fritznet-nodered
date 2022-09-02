@@ -1,0 +1,28 @@
+<script type="text/javascript">
+    RED.nodes.registerType("device in network", {
+        category: "network",
+        color: "#DEBD5C",
+        defaults: {
+            name: { value: "" }
+        },
+        inputs: 1,
+        outputs: 1,
+        icon: "bridge.svg",
+        label: function() {
+            return this.name || "device in network";
+        }
+    });
+</script>
+
+
+<script type="text/html" data-template-name="device in network">
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+</script>
+
+
+<script type="text/html" data-help-name="device in network">
+    <p>Asks the FRITZ!Box if a device is currently connected within the network</p>
+</script>
