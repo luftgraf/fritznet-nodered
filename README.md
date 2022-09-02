@@ -5,4 +5,4 @@
 This repository contains a NodeRED module to query some network information from a FRITZ!Box via the TR-064 API.
 
 ## Installation
-This module can be installed via `npm install git+https://github.com/KizzyCode/node-red-contrib-fritznet`.
+This module can be installed via `npm install git+https://github.com/KizzyCode/fritznet-nodered.git`.
