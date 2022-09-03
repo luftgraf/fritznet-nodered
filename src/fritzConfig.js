@@ -4,5 +4,5 @@ module.exports = function(RED) {
         this.username = config.username;
         this.password = config.password;
     }
-    RED.nodes.registerType("FRITZ!Box", fritzBox);
+    RED.nodes.registerType("fritz-box", fritzBox);
 }
