@@ -1,6 +1,6 @@
 {
   "name": "node-red-contrib-fritznet",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "FRITZ!Box network API access",
   "node-red": {
     "version": ">=2.0.0",
@@ -18,7 +18,8 @@
   },
   "keywords": [
     "contrib",
-    "fritzbox"
+    "fritzbox",
+    "node-red"
   ],
   "author": "KizzyCode/Keziah Biermann",
   "license": "BSD-2-Clause",
