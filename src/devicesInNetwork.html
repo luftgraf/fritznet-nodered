@@ -1,5 +1,5 @@
 <script type="text/javascript">
-    RED.nodes.registerType("device in network", {
+    RED.nodes.registerType("devices in network", {
         category: "network",
         color: "#359EA6",
         defaults: {
@@ -9,13 +9,13 @@
         outputs: 1,
         icon: "font-awesome/fa-wifi",
         label: function() {
-            return this.name || "device in network";
+            return this.name || "devices in network";
         }
     });
 </script>
 
 
-<script type="text/html" data-template-name="device in network">
+<script type="text/html" data-template-name="devices in network">
     <div class="form-row">
         <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
         <input type="text" id="node-input-name" placeholder="Name">
@@ -23,6 +23,6 @@
 </script>
 
 
-<script type="text/html" data-help-name="device in network">
+<script type="text/html" data-help-name="devices in network">
     <p>Asks the FRITZ!Box if a device is currently connected within the network</p>
 </script>

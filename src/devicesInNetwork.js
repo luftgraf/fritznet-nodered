@@ -8,7 +8,7 @@ const http = require("http");
  * @param {function} onCompletion The completion handler
  * @return {boolean} Whether the device is currently connected within the network or not
  */
-function parseResponse(xml, onCompletion) {
+function apiParse(xml, onCompletion) {
     try {
         // Extract the result
         const regex = /.*<NewActive>(.*)<\/NewActive>.*/g;
@@ -27,8 +27,6 @@ function parseResponse(xml, onCompletion) {
 /**
  * Performs an API request
  * 
- * @param {string} username The login username
- * @param {string} password The login password
  * @param {string} mac The MAC address of the queried device
  * @param {function} onCompletion The completion handler
  */
@@ -68,7 +66,7 @@ function apiRequest(mac, onCompletion) {
         result.on("data", chunk => data += chunk);
 
         // Parse the result
-        result.on("end", () => parseResponse(data, onCompletion));
+        result.on("end", () => apiParse(data, onCompletion));
     });
     request.on("error", error => {
         // Propagate the error to the completion handler
@@ -81,6 +79,52 @@ function apiRequest(mac, onCompletion) {
 }
 
 
+/**
+ * Queries a bunch of devices at once
+ * 
+ * @param {Array<string>} macs The device's MAC addresses
+ * @param {function} onCompletion The completion handler
+ */
+function queryDevices(macs, onCompletion) {
+    // Build the state object
+    const state = {
+        devices: [],
+        remaining: macs.length,
+        poisoned: false
+    };
+
+    // Populate the state object
+    for (const mac of macs) {
+        state.devices.push({ mac: mac, status: null })
+    }
+
+    // Query all addresses
+    for (const device of state.devices) {
+        apiRequest(device.mac, (result, error) => {
+            // No-op if poisoned
+            if (state.poisoned) {
+                return;
+            }
+
+            // Propagate error and abort if appropriate
+            if (error) {
+                state.poisoned = true;
+                onCompletion(null, error);
+                return;
+            }
+
+            // Register result
+            device.status = result;
+            state.remaining -= 1;
+            if (state.remaining == 0) {
+                // Call completion handler if all devices have been queried
+                onCompletion(state.devices);
+            }
+        });
+    }
+}
+
+
 module.exports = function(RED) {
     function init(config) {
         // Create the node
@@ -89,7 +133,7 @@ module.exports = function(RED) {
         // Register the on-"input"-handler
         this.on("input", function(msg, send, done) {
             // Perform the API request
-            apiRequest(msg.payload, (result, error) => {
+            queryDevices(msg.payload, (result, error) => {
                 // Propagate the error to NodeRED
                 if (error) {
                     done(error);
@@ -102,5 +146,5 @@ module.exports = function(RED) {
             });
         });
     }
-    RED.nodes.registerType("device in network", init);
+    RED.nodes.registerType("devices in network", init);
 };
