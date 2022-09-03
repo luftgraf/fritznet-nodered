@@ -6,7 +6,7 @@
     "version": ">=2.0.0",
     "nodes": {
       "FRITZ!Box": "src/fritzConfig.js",
-      "device in network": "src/deviceInNetwork.js"
+      "device in network": "src/devicesInNetwork.js"
     }
   },
   "repository": {
