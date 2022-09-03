@@ -9,6 +9,9 @@
       "device in network": "src/devicesInNetwork.js"
     }
   },
+  "engines": {
+    "node": ">=12.0.0"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/KizzyCode/fritznet-nodered.git"
