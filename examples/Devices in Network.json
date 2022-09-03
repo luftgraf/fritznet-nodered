@@ -1,0 +1,65 @@
+[
+    {
+        "id": "3b603b0430cc405e",
+        "type": "tab",
+        "label": "Example",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "226bb7b523213dbf",
+        "type": "inject",
+        "z": "3b603b0430cc405e",
+        "name": "Some MAC addresses",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "[\"9C:F3:87:C4:79:E1\"]",
+        "payloadType": "json",
+        "x": 140,
+        "y": 60,
+        "wires": [
+            [
+                "8a14d0a3c61b9a1b"
+            ]
+        ]
+    },
+    {
+        "id": "4d447f9703e541ec",
+        "type": "debug",
+        "z": "3b603b0430cc405e",
+        "name": "print status",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 530,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "8a14d0a3c61b9a1b",
+        "type": "devices in network",
+        "z": "3b603b0430cc405e",
+        "name": "",
+        "x": 350,
+        "y": 60,
+        "wires": [
+            [
+                "4d447f9703e541ec"
+            ]
+        ]
+    }
+]
