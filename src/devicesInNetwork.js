@@ -46,7 +46,7 @@ function apiRequest(mac, onCompletion) {
     
     // Build the request
     const options = {
-        hostname: "192.168.178.1",
+        hostname: "fritz.box",
         port: 49000,
         path: "/upnp/control/hosts",
         method: "POST",
