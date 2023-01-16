@@ -4,7 +4,8 @@
         defaults: {
             name: { value: "" },
             username: { value: "", required: true },
-            password: { value: "", required: true }
+            password: { value: "", required: true },
+            boxurl: { value: "192.168.178.1", required: true }
         },
         icon: "db.svg",
         label: function() {
@@ -21,5 +22,9 @@
     <div class="form-row">
         <label for="node-config-input-password"><i class="fa fa-user-secret"></i> Password</label>
         <input type="password" id="node-config-input-password">
+    </div>
+    <div class="form-row">
+        <label for="node-config-input-boxurl"><i class="fa fa-user-circle"></i> Fritz!Box URL</label>
+        <input type="text" id="node-config-input-boxurl">
     </div>
 </script>
