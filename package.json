@@ -14,7 +14,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/KizzyCode/fritznet-nodered.git"
+    "url": "git+https://github.com/luftgraf/fritznet-nodered.git"
   },
   "scripts": {
     "test": "node tests/test.js"
@@ -27,7 +27,7 @@
   "author": "KizzyCode/Keziah Biermann",
   "license": "BSD-2-Clause",
   "bugs": {
-    "url": "https://github.com/KizzyCode/fritznet-nodered/issues"
+    "url": "https://github.com/luftgraf/fritznet-nodered/issues"
   },
-  "homepage": "https://github.com/KizzyCode/fritznet-nodered#readme"
+  "homepage": "https://github.com/luftgraf/fritznet-nodered#readme"
 }
